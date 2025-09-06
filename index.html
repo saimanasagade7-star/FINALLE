@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Framer Motion Web App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Framer Motion via CDN -->
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+  <!-- App Script -->
+  <script type="text/javascript">
+    const { motion } = window["framer-motion"];
+    const { createElement, useState } = React;
+    const { createRoot } = ReactDOM;
+
+    function App() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement("h1", null, "Framer Motion in HTML"),
+        React.createElement(
+          motion.div,
+          {
+            initial: { opacity: 0, scale: 0.5 },
+            animate: { opacity: 1, scale: 1 },
+            whileHover: { scale: 1.1 },
+            transition: { duration: 0.6 },
+            style: {
+              width: 200,
+              height: 200,
+              backgroundColor: "#4ade80",
+              borderRadius: 20,
+              margin: "40px auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              fontSize: "1.2rem",
+            },
+          },
+          "Hover me!"
+        )
+      );
+    }
+
+    const root = createRoot(document.getElementById("root"));
+    root.render(React.createElement(App));
+  </script>
+</body>
+</html>
